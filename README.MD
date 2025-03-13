@@ -1,25 +1,58 @@
-# Visão Geral do Projeto
+<h1 align="center">
+  
+  <br>
+  <img
+  src=".\_docs\assets\icon.png"
+  width = "450"
+  >
+  </br>
+  <a href="#">
+    Megaman API
+  </a>
+</h1>
 
-Esta API foi desenvolvida em .NET Core 3.1 e tem como objetivo fornecer, via endpoints, informações sobre os bosses do Megaman em formato JSON. Cada entidade Robot é representada com os atributos: Id, Code, Name, HP e Picture.
+<p align="center">
+  <strong>Fornecendo informações sobre os bosses do Megaman via API REST.</strong>
+</p>
 
-# Dependências do Projeto
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
+  </a>
+  <a href="#dependencias">
+    <img src="https://img.shields.io/badge/.NET_Core-3.1-blue" alt=".NET Core 3.1" />
+  </a>
+  <a href="#contribuir">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Contribuições bem-vindas!" />
+  </a>
+</p>
 
-As principais dependências utilizadas foram organizadas na tabela abaixo, com links para as respectivas páginas oficiais:
 
-| Dependência | Versão | Link Oficial
-----------------------------------------
-| Microsoft.EntityFrameworkCore |	3.1.8	| Microsoft.EntityFrameworkCore
-| Microsoft.EntityFrameworkCore.Design |	3.1.8 |	Microsoft.EntityFrameworkCore.Design
-| Microsoft.EntityFrameworkCore.SqlServer	| 3.1.8	| Microsoft.EntityFrameworkCore.SqlServer
-| Newtonsoft.Json |	12.0.2 | Newtonsoft.Json
 
-# Estrutura do Projeto
+## 🚀 Visão Geral
 
-A estrutura do projeto segue a árvore de pastas abaixo:
+A **Megaman API** foi desenvolvida em **.NET Core 3.1** para fornecer informações sobre os bosses do Megaman em formato JSON. Cada entidade `Robot` contém os seguintes atributos:
 
-pgsql
-Copiar
-Editar
+- **Id**: Identificador único
+- **Code**: Código do robô
+- **Name**: Nome do boss
+- **HP**: Pontos de vida
+- **Picture**: URL da imagem
+
+## 📦 Dependências
+
+Esta API utiliza as seguintes dependências:
+
+| Dependência | Versão |
+|-------------|--------|
+| [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore) | 3.1.8 |
+| [Microsoft.EntityFrameworkCore.Design](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design) | 3.1.8 |
+| [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer) | 3.1.8 |
+| [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) | 12.0.2 |
+
+## 📂 Estrutura do Projeto
+
+```
 .vs/
 .vscode/
 bin/
@@ -37,31 +70,37 @@ MegamanApi.csproj
 MegamanApi.sln
 Program.cs
 Startup.cs
+```
 
-# Descrição dos Diretórios e Arquivos
-- .vs/ e .vscode/: Contêm as configurações específicas do ambiente de desenvolvimento (Visual Studio e Visual Studio Code, respectivamente).
-- bin/: Armazena os arquivos compilados da aplicação.
-- Controllers/: Hospeda os controladores que gerenciam os endpoints da API (por exemplo, RobotsController).
-- Database/: Provavelmente contém a configuração do contexto do Entity Framework e migrações relacionadas ao banco de dados.
-- middlewares/: Pasta destinada aos middlewares, que são componentes responsáveis por interceptar e processar as requisições HTTP.
-- Models/: Contém as classes de modelo que representam as entidades do domínio (como o Robot).
-- obj/: Pasta gerada durante o processo de build com arquivos intermediários.
-- Properties/: Contém arquivos de propriedades do projeto, como informações de assembly.
-- Services/: Contém a camada de serviços onde reside a lógica de negócio e a comunicação com a camada de acesso a dados.
-appsettings.Development.json e appsettings.json: Arquivos de configuração para os ambientes de desenvolvimento e produção.
-global.json: Define a versão do SDK do .NET a ser utilizada pelo projeto.
-- MegamanApi.csproj: Arquivo de projeto que especifica as dependências e configurações do build.
-- MegamanApi.sln: Solução que agrupa os projetos da aplicação.
-- Program.cs: Ponto de entrada da aplicação.
-- Startup.cs: Responsável pela configuração dos serviços (DI, middlewares, etc.) e do pipeline de requisição.
+### 🏗️ Descrição dos Diretórios
+- **Controllers/** - Contém os controladores responsáveis pelos endpoints da API.
+- **Database/** - Contém a configuração do Entity Framework e migrações.
+- **middlewares/** - Implementação de middlewares para tratamento de requisições.
+- **Models/** - Representação das entidades do domínio.
+- **Services/** - Camada de serviços responsável pela lógica de negócios.
+- **Program.cs** - Ponto de entrada da aplicação.
+- **Startup.cs** - Configuração dos serviços e pipeline de requisições.
 
-# Técnicas e Boas Práticas Utilizadas
-- .NET Core 3.1: Plataforma robusta e multiplataforma para o desenvolvimento de aplicações web de alto desempenho.
-- Entity Framework Core (EF Core): Utilizado para o mapeamento objeto-relacional (ORM), facilitando o acesso e a manipulação de dados no banco de dados SQL Server. As dependências relacionadas foram:
-  -  Microsoft.EntityFrameworkCore
-  - Microsoft.EntityFrameworkCore.Design
-  - Microsoft.EntityFrameworkCore.SqlServer
-- Newtonsoft.Json: Biblioteca para serialização e desserialização de objetos JSON, garantindo uma troca de dados consistente e padronizada. Veja mais em Newtonsoft.Json.
-- Arquitetura em Camadas: A separação em Controllers, Services e Models promove uma estrutura modular, facilitando a manutenção, testes e escalabilidade do sistema.
-- Configuração Centralizada: Uso dos arquivos appsettings.json para gerenciar as configurações da aplicação, permitindo ajustes conforme o ambiente (desenvolvimento, homologação, produção).
-- Middlewares Customizados: Implementação de middlewares para tratamento centralizado de requisições, autenticação, logging e tratamento de erros, melhorando a robustez e a segurança da API.
+## 🛠️ Técnicas e Boas Práticas
+
+- **.NET Core 3.1** - Plataforma moderna, escalável e multiplataforma.
+- **Entity Framework Core** - ORM para acesso ao banco de dados SQL Server.
+- **Newtonsoft.Json** - Serialização e desserialização JSON.
+- **Arquitetura em Camadas** - Separação de responsabilidades em Controllers, Services e Models.
+- **Configuração Centralizada** - Uso de `appsettings.json` para gerenciamento de configurações.
+- **Middlewares Customizados** - Implementação para autenticação, logging e tratamento de erros.
+
+## 🤝 Como Contribuir
+
+Quer contribuir para o projeto? Veja as orientações abaixo:
+
+1. Faça um fork do repositório.
+2. Crie um branch com sua feature (`git checkout -b minha-feature`).
+3. Faça commit das mudanças (`git commit -m 'Adiciona nova feature'`).
+4. Faça push para o branch (`git push origin minha-feature`).
+5. Abra um Pull Request.
+
+## 📄 Licença
+
+Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+
