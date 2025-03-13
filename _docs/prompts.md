@@ -1,8 +1,9 @@
-contexto:
-Este projeto é um projeto de uma api feito em dotnet, para listar os dados dos bosses de megaman, o objetivo principal é ser um backend que fornece jsons no formato abaixo:
+# Prompts
+
+Contexto: Este é um projeto de uma API usando dotnet para listar os dados dos bosses de Megaman. O objetivo principal é ser um backed que fornece JSONs no formato abaixo:
 
 ```
-{
+Robot{ 
   Id =1,
   Code = "DLN/DRN-003",
   Name = "Cutman",
@@ -10,6 +11,8 @@ Este projeto é um projeto de uma api feito em dotnet, para listar os dados dos 
   Picture = "https://vignette.wikia.nocookie.net/megaman/images/2/22/Cutman.png"
 }
 ```
+
+
 
 Especificações do projeto:
 
@@ -33,10 +36,15 @@ Especificações do projeto:
 </Project>
 ```
 
-os endpoints do projeto são:
-namespace Megaman.Controllers
+ENDPOINTS:
 
 ```
+using System.Collections.Generic;
+using Megaman.Dtos;
+using Megaman.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Megaman.Controllers
 {
     //api/v1/robots
     [ApiController]
@@ -50,7 +58,7 @@ namespace Megaman.Controllers
         }
 
         //GET api/robots
-        [HttpGet]
+        [HttpGet] 
         public ActionResult<IEnumerable<RobotReadDTO>> GetAllRobots()
         {
             var robotItems = _services.SearchAll();
@@ -61,13 +69,13 @@ namespace Megaman.Controllers
         [HttpGet]
         [Route("{id:int}")]
         public object GetCommandById([FromRoute]int id)
-        {
+        {   
             var robot = _services.SearchById(id);
 
             if(robot != null)
                 return Ok(robot);
-
-                return NotFound(
+            
+                return NotFound( 
                         new { message = "Nenhum robo encontrado" }
                 );
         }
@@ -85,10 +93,9 @@ namespace Megaman.Controllers
 
 REGRAS:
 
-- Sempre que citar alguma dependência do projeto, deixe ela como hyperlink para a página oficial daquela dependência
-- Organize as dependências em uma sessão em formato de tabela
-
-- crie uma estrutura do projeto com base na arvore de pastas abaixo, e crie uma sessão para explicitar as técnicas utilizadas
+1. Sempre que citar uma dependecia do projeto, deixe um hiperlink para a pagina oficial daquela dependecia
+2. Organize as dependecias em uma seção em formato de tabela
+3. Crie uma estrutura do projeto com base na arvore de pastas abaixo e crie uma seção para explicar as tecnicas utilizadas:
 
 .vs
 .vscode
@@ -101,9 +108,9 @@ obj
 Properties
 Services
 appsettings.Development.json
-appsettings.json  
+appsettings.json
 global.json
-MegamanApi.csproj  
+MegamanApi.csproj
 MegamanApi.sln
 Program.cs
 Startup.cs
